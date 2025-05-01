@@ -89,11 +89,11 @@
  
    * **Prompts** (HTTP or script files):
  
-     * ```prompt_engineering/generate_user_stories.http```
+     * ```prompt_engineering/prompts/generate_user_stories.md```
  
-     * ```prompt_engineering/generate_test_cases.http```
+     * ```prompt_engineering/prompts/generate_test_cases.md```
  
-     * ```prompt_engineering/generate_documentation.http```
+     * ```prompt_engineering/prompts/generate_documentation.md```
  
    * **Responses** (AI-generated markdown):
  
