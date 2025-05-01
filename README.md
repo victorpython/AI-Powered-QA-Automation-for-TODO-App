@@ -1,120 +1,126 @@
-# AI-Powered QA Automation for TODO App
-This repository demonstrates a fully automated QA pipeline for a TODO application (frontend in React, backend in .NET), where AI is used to discover, formalize and document requirements and tests through prompt engineering.
+# Todo Application with Authentication
 
-## 📁 Repository Structure
+A full-stack todo application built with ASP.NET Core and React, featuring user authentication and a modern Material-UI interface.
+
+## Features
+
+- User authentication (register/login)
+- JWT-based authentication
+- CRUD operations for todos
+- Category-based todo organization
+- Dark/Light mode theme switching
+- Import/Export todos (JSON/CSV)
+- Modern, responsive UI with Material-UI
+- Secure password hashing with BCrypt
+
+## Tech Stack
+
+### Backend (.NET 7)
+- ASP.NET Core Web API
+- Entity Framework Core with SQLite
+- JWT Authentication
+- BCrypt.Net for password hashing
+- CORS enabled for frontend communication
+
+### Frontend (React)
+- TypeScript
+- Material-UI components
+- React Hooks
+- Axios for API communication
+- Local storage for auth persistence
+
+## Getting Started
+
+### Prerequisites
+- .NET 7 SDK
+- Node.js and npm
+- Git
+
+### Installation
+
+1. Clone the repository:
 ```bash
-├── TodoApi/
-│   ├── Controllers/
-│   ├── Models/
-│   ├── prompt_engineering/
-│   │   ├── prompts/
-│   │   │   ├── doc_prompt.md
-│   │   │   ├── testcases_prompt.md
-│   │   │   └── userstories_prompt.md
-│   │   └── responses/
-│   │       ├── doc_response.md
-│   │       ├── testcases_response.md
-│   │       └── userstories_response.md
-│   └── TodoApi.csproj
-├── todo-client/
-│   ├── public/
-│   ├── src/
-│   ├── scripts/
-│   │   ├── generate_user_stories_selenium.py
-│   │   ├── generate_test_cases_selenium.py
-│   │   ├── generate_documentation_selenium.py
-│   │   ├── run_tests.sh
-│   │   └── test_todo_app.py
-│   └── docs/
-│       ├── USER_STORIES.md
-│       ├── TEST_CASES.md
-│       └── TECHNICAL_DOCUMENTATION.md
-├── .gitignore
-└── README.md
+git clone <repository-url>
+cd WindNetDemo
 ```
 
-## 🚀 Getting Started
+2. Start the backend:
+```bash
+cd TodoApi
+dotnet run
+```
+The API will be available at `http://localhost:5141`
 
-**1. Backend**
-   
-  ```bash
-  cd TodoApi
-  dotnet run
-  # should listen on http://localhost:5141
-  ```
+3. Start the frontend:
+```bash
+cd todo-client
+npm install
+npm start
+```
+The React app will be available at `http://localhost:3001`
 
-**2. Frontend**
+## API Endpoints
 
-  ```bash
-  cd todo-client
-  npm install
-  npm start
-  # should serve at http://localhost:3000
-  ```
+### Authentication
+- POST `/api/auth/register` - Register a new user
+- POST `/api/auth/login` - Login and get JWT token
 
-**3. Run the automated tests**
+### Todos
+- GET `/api/todo` - Get all todos for authenticated user
+- GET `/api/todo/{id}` - Get specific todo
+- POST `/api/todo` - Create new todo
+- PUT `/api/todo/{id}` - Update todo
+- DELETE `/api/todo/{id}` - Delete todo
 
-  ```bash
-  cd todo-client
-  bash scripts/run_tests.sh
-  ```
+## Frontend Features
 
-## 🛠️ QA Automation
+### Authentication
+- User registration with username/password
+- Login with username/password
+- Automatic token refresh
+- Secure token storage
 
-All end-to-end tests are implemented with **Selenium** and **pytest**. A unique username is generated on each run to avoid collisions and ensure idempotency.
+### Todo Management
+- Create, read, update, and delete todos
+- Filter todos by category
+- Mark todos as complete/incomplete
+- Import/Export functionality
+- Dark/Light mode theme
 
-## 🤖 AI & Prompt Engineering
+## Security Features
 
-We leverage AI both in the **frontend** and the **backend** to bootstrap and maintain our QA artifacts:
+- Password hashing using BCrypt
+- JWT token authentication
+- Protected API endpoints
+- CORS configuration
+- User-specific todo access
 
-1. **Frontend** (**React** – ```todo-client```)
+## Project Structure
 
-  * **Prompts** (scripts invoking the AI):
+```
+WindNetDemo/
+├── TodoApi/                # Backend API
+│   ├── Controllers/        # API endpoints
+│   ├── Models/            # Data models
+│   ├── Data/              # Database context
+│   └── Program.cs         # App configuration
+│
+└── todo-client/           # Frontend React app
+    ├── src/
+    │   ├── components/    # React components
+    │   ├── types/        # TypeScript types
+    │   └── App.tsx       # Main app component
+    └── package.json      # Dependencies
+```
 
-    * ```scripts/generate_user_stories_selenium.py```
+## Contributing
 
-    * ```scripts/generate_test_cases_selenium.py```
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
 
-    * ```scripts/generate_documentation_selenium.py```
+## License
 
-  * **Responses** (AI outputs stored here):
-
-    * ```docs/USER_STORIES```
-
-    * ```docs/TEST_CASES```
-
-    * ```docs/TECHNICAL_DOCUMENTATION```
-
-2. **Backend** (**.NET** – ```TodoApi```)
-
-  * **Prompts** (HTTP or script files):
-
-    * ```prompt_engineering/generate_user_stories.http```
-
-    * ```prompt_engineering/generate_test_cases.http```
-
-    * ```prompt_engineering/generate_documentation.http```
-
-  * **Responses** (AI-generated markdown):
-
-    * ```prompt_engineering/responses/userstories_response.md```
-
-    * ```prompt_engineering/responses/testcases_response.md```
-
-    * ```prompt_engineering/responses/doc_response.md```
-
-With this approach, AI helps us to:
-
-  * **Elicit** and **structure** user stories
-
-  * **Design** robust end-to-end test scenarios
-
-  * **Produce** up-to-date technical documentation
-
-  * **Keep** our QA pipeline agile and repeatable
-
-**Enjoy a smarter, AI-driven QA workflow!**
-
-## 📄 License
-
-This project is under MIT license.
+This project is licensed under the MIT License.
