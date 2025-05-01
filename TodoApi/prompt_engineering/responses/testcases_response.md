@@ -1,0 +1,7 @@
+| ID | Nombre del caso | Endpoint | Método HTTP | Entradas válidas | Entradas inválidas | Salida esperada | Estatus esperado |
+|----|-----------------|----------|-------------|------------------|---------------------|-----------------|------------------|
+| 1 | Obtener todos los todos del usuario autenticado | /api/Todo | GET | - | - | Lista de todos del usuario autenticado | 200 OK |
+| 2 | Obtener un todo específico del usuario autenticado | /api/Todo/{id} | GET | ID válido | ID inválido | Todo específico del usuario autenticado o NotFound si no existe | 200 OK o 404 Not Found |
+| 3 | Crear un nuevo todo para el usuario autenticado | /api/Todo | POST | Título, IsCompleted, Categoría válidos | Título o Categoría vacíos, Categoría inválida | Nuevo todo creado o mensaje de error correspondiente | 201 Created o 400 Bad Request |
+| 4 | Actualizar un todo existente del usuario autenticado | /api/Todo/{id} | PUT | ID válido, Título, IsCompleted, Categoría válidos | ID inválido, Título o Categoría vacíos, Categoría inválida | Todo actualizado o mensaje de error correspondiente | 200 OK o 400 Bad Request |
+| 5 | Eliminar un todo existente del usuario autenticado | /api/Todo/{id} | DELETE | ID válido | ID inválido | No Content si se elimina correctamente o NotFound si no existe | 204 No Content o 404 Not Found |
